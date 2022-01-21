@@ -1,1 +1,8 @@
-S:\Work\java\simple_mvc\src\main\java\org\example\web\controllers\HomeController.java
+S:\Works\IdeaProjects\simple_mvc\src\main\java\org\example\app\services\BookRepository.java
+S:\Works\IdeaProjects\simple_mvc\src\main\java\org\example\web\dto\Book.java
+S:\Works\IdeaProjects\simple_mvc\src\main\java\org\example\web\dto\LoginForm.java
+S:\Works\IdeaProjects\simple_mvc\src\main\java\org\example\app\services\LoginService.java
+S:\Works\IdeaProjects\simple_mvc\src\main\java\org\example\web\controllers\BookShelfController.java
+S:\Works\IdeaProjects\simple_mvc\src\main\java\org\example\app\services\ProjectRepository.java
+S:\Works\IdeaProjects\simple_mvc\src\main\java\org\example\app\services\BookService.java
+S:\Works\IdeaProjects\simple_mvc\src\main\java\org\example\web\controllers\LoginController.java
