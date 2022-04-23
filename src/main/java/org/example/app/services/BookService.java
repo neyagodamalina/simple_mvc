@@ -8,26 +8,26 @@ import java.util.List;
 
 @Service
 public class BookService {
-    private final ProjectRepository<Book> bookRepository;
+    private final ProjectRepository<Book> projectRepository;
 
     @Autowired
-    public BookService(ProjectRepository<Book> bookRepository) {
-        this.bookRepository = bookRepository;
+    public BookService(ProjectRepository<Book> projectRepository) {
+        this.projectRepository = projectRepository;
     }
 
     public List<Book> getAllBooks(){
-        return bookRepository.retreiveAll();
+        return projectRepository.retreiveAll();
     }
 
     public void saveBook(Book book){
-        bookRepository.store(book);
+        projectRepository.store(book);
     }
 
-    public boolean removeBookById(String bookIdToRemove) {
-        return bookRepository.removeItemById(bookIdToRemove);
+    public boolean removeBookById(Integer bookIdToRemove) {
+        return projectRepository.removeItemById(bookIdToRemove);
     }
 
     public void removeBookByRegex(String queryRegex) {
-        bookRepository.removeItemByRegex(queryRegex);
+        projectRepository.removeItemByRegex(queryRegex);
     }
 }
