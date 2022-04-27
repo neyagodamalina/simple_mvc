@@ -24,6 +24,17 @@
         th, td{
             border-bottom: 1px solid #ddd;
         }
+         .error {
+             color: red;
+         }
+        li {
+            list-style-type: none; /* Убираем маркеры */
+            font-size: small;
+        }
+        ul {
+            margin-left: 0; /* Отступ слева в браузере IE и Opera */
+            padding-left: 0; /* Отступ слева в браузере Firefox, Safari, Chrome */
+        }
     </style>
 </head>
 <body>
@@ -32,17 +43,33 @@
         <table>
             <tr>
                 <td>
-                    <input type="text" placeholder="author" th:field="*{author}">
+                    <input type="text" placeholder="author" th:field="*{author}"/>
                 </td>
                 <td>
-                    <input type="text" placeholder="book_title" th:field="*{title}">
+                    <input type="text" placeholder="book_title" th:field="*{title}"/>
                 </td>
                 <td>
-                    <input type="text" placeholder="size (pages)" th:field="*{size}">
-                    <p th:if="${#fields.hasErrors()}">size must be digit and less then 4 digits</p>
+                    <input type="text" placeholder="size (pages)" th:field="*{size}"/>
                 </td>
                 <td>
-                    <input type="submit" value="save" th:field="*{author}">
+                    <input type="submit" value="save"/>
+                </td>
+            </tr>
+            <tr th:if="${#fields.hasErrors('*')}">
+                <td>
+                    <ul>
+                        <li th:each="err : ${#fields.errors('author')}" th:text="${err}" class="error" />
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li th:each="err : ${#fields.errors('title')}" th:text="${err}" class="error" />
+                    </ul>
+                </td>
+                <td>
+                    <ul>
+                        <li th:each="err : ${#fields.errors('size')}" th:text="${err}" class="error" />
+                    </ul>
                 </td>
             </tr>
         </table>
@@ -57,22 +84,34 @@
                 <td>
                     <input type="submit" value="remove">
                 </td>
-                <td th:if="${#fields.hasErrors()}">
-                    <p>Wrong id or not found</p>
+            </tr>
+            <tr th:if="${#fields.hasErrors('id')}">
+                <td>
+                    <ul>
+                        <li th:each="err : ${#fields.errors('id')}" th:text="${err}" class="error" />
+                    </ul>
                 </td>
             </tr>
         </table>
     </form>
 
-    <form method="post" th:action="@{/books/removeByRegex}">
+    <form method="post" th:action="@{/books/removeByRegex}" th:object="${regexWrapper}">
         <table>
             <tr>
                 <td>
-                    <input type="text" placeholder="regex" th:name="queryRegex">
+                    <input type="text" placeholder="regex" th:field="*{queryRegEx}"/>
                 </td>
                 <td>
-                    <input type="submit" value="remove by regex">
+                    <input type="submit" value="remove by regex"/>
                 </td>
+            </tr>
+            <tr th:if="${#fields.hasErrors('queryRegEx')}">
+                <td>
+                    <ul>
+                        <li th:each="err : ${#fields.errors('queryRegEx')}" th:text="${err}" class="error" />
+                    </ul>
+                </td>
+                <td></td>
             </tr>
         </table>
     </form>
@@ -86,6 +125,10 @@
                 <td>
                     <input type="submit" name="upload"/>
                 </td>
+            </tr>
+            <tr>
+                <td th:if="${notSelectedFile}" class="error">Not selected file to upload</td>
+                <td></td>
             </tr>
         </table>
     </form>
@@ -104,6 +147,7 @@
             <td th:text="${book.size}"></td>
         </tr>
     </table>
+
 </div>
 </body>
 </html>

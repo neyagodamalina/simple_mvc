@@ -1,4 +1,4 @@
-package org.example.web.dto;
+package org.example.dto;
 
 public class LoginForm {
     private String username;

@@ -1,6 +1,6 @@
 package org.example.app.services;
 
-import org.example.web.dto.Book;
+import org.example.dto.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

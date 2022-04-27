@@ -1,12 +1,16 @@
-package org.example.web.dto;
+package org.example.dto;
 
-import javax.validation.constraints.Digits;
+import javax.validation.constraints.*;
 
 public class Book {
     private Integer id;
+    @NotBlank(message = "The Author should not be empty")
     private String author;
+    @NotBlank(message = "The Author should not be empty")
     private String title;
-    @Digits(integer = 4, fraction = 0)
+    @Digits(integer = 4, fraction = 0, message = "The Size must be < 10000")
+    @NotNull(message = "The Size should not be empty")
+    @Positive(message = "The Size must be positive")
     private Integer size;
 
     public Integer getId() {
